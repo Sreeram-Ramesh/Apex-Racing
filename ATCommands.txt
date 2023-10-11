@@ -1,0 +1,198 @@
+# AT COMMANDS
+
+Types of AT Commands:
+
+There are four types of AT commands:
+
+1) TEST COMMANDS – used to check whether a command is supported or not by
+the MODEM.
+
+SYNTAX:                   AT<command name>=?
+
+For example:              ATD=?
+
+2) READ COMMANDS – used to get mobile phone or MODEM settings for an
+operation.
+
+SYNTAX:                   AT<command name>?
+
+For example:              AT+CBC?
+
+3) SET COMMANDS – used to modify mobile phone or MODEM settings for an
+operation.
+
+SYNTAX:                   AT<command name>=value1, value2, …, valueN
+
+Some values in set commands can be optional.
+
+For example:              AT+CSCA="+9876543210", 120
+
+4) EXECUTION COMMANDS – used to carry out an operation.
+
+SYNTAX:                   AT<command name>=parameter1, parameter2, …,
+parameterN
+
+The read commands are not available to get value of last parameter assigned
+in execution commands because parameters of execution commands are not
+stored.
+
+For example:              AT+CMSS=1,"+ 9876543210", 120
+
+###########################################################################
+###########################################################################
+
+Explanation of commonly used AT commands:
+
+1) AT – This command is used to check communication between the module and
+the computer.
+
+For example,
+AT        
+OK
+
+The command returns a result code OK if the computer (serial port) and
+module are connected properly. If any of module or SIM is not working, it
+would return a result code ERROR.
+
+---------------------------------------------------------------------------
+
+2) +CMGF – This command is used to set the SMS mode. Either text or PDU
+mode can be selected by assigning 1 or 0 in the command.
+
+SYNTAX:         AT+CMGF=<mode>
+
+0: for PDU mode
+1: for text mode
+
+The text mode of SMS is easier to operate but it allows limited features of
+SMS. The PDU      (protocol data unit) allows more access to SMS services
+but the operator requires bit level knowledge of TPDUs. The headers and
+body of SMS are accessed in hex format in PDU mode so it allows availing
+more features.
+
+For example,  
+AT+CMGF=1
+OK
+
+---------------------------------------------------------------------------
+
+3) +CMGW – This command is used to store message in the SIM.
+
+SYNTAX:         AT+CMGW=" Phone number"> Message to be stored Ctrl+z
+As one types AT+CMGW and phone number, ‘>’ sign appears on next line where
+one can type the message. Multiple line messages can be typed in this case.
+This is why the message is terminated by providing a ‘Ctrl+z’ combination.
+As Ctrl+z is pressed, the following information response is displayed on
+the screen.
+
++CMGW: Number on which message has been stored
+
+---------------------------------------------------------------------------
+
+4) +CMGS – This command is used to send a SMS message to a phone number.
+
+SYNTAX:         AT+CMGS= serial number of message to be send.
+         
+As the command AT+CMGS and serial number of message are entered, SMS is sent to the particular SIM.
+
+For example,
+AT+CMGS=1
+OK
+
+---------------------------------------------------------------------------
+
+5) ATD – This command is used to dial or call a number.
+
+SYNTAX:         ATD<Phone number>;(Enter)
+
+For example,
+ATD123456789;
+
+---------------------------------------------------------------------------
+
+6) ATA – This command is used to answer a call. An incoming call is indicated by a message ‘RING’ which is repeated for every ring of the call. When the call ends ‘NO CARRIER’ is displayed on the screen.
+ 
+SYNTAX:         ATA(Enter)
+            
+As ATA followed by enter key is pressed, incoming call is answered.
+For example,
+RING
+RING
+ATA
+
+---------------------------------------------------------------------------
+ 
+7) ATH – This command is used to disconnect remote user link with the GSM
+module.
+
+SYNTAX:         ATH (Enter)
+
+---------------------------------------------------------------------------
+###########################################################################
+###########################################################################
+
+IMPORTANT COMMANDS:
+
+- AT+CPIN? - Check if the SIM card is ready.
+- Should reply Ready
+
+- AT+COPS? - Check network operator name.
+
+- AT+CBC - Check battery charging.
+- 0, 82, 4059
+- 0 - means battery not charging.
+- 82 - means battery is 82 % charged.
+- 4059 - 4059/1000 = 4.059V
+
+- AT+CSQ - Check signal quality
+- 31 - Excellent
+- 20 - 31 - Excellent
+- 15 - 19 -  Good
+- 14 - 10 - Ok
+- 2 - 9 - Poor
+
+- AT+GMI - Manufacturer name
+
+- AT+GMR - Check revision
+
+- AT+GMM - Check Model
+
+- AT+IPR=9600 - set Baud rate (to 9600)
+
+- AT+GSN - Check IMEI number
+
+- ATD+91XXXXXXXXXX; - To call.
+
+- ATA - To receive calls.
+
+- ATH - To disconnect calls.
+
+- AT+CMGL=? - To list messages stored in SIM card and GSM Module.
+
+- AT+CMGS="+91XXXXXXXXXX" - To send a message
+- Type message and press ctrl Z to send.
+
+- AT+CMGD=LocationNumber - To delete an SMS.
+
+- AT+CLVL=50 - Set loud speaker volume level to 50.
+
+- AT+CRSL=50 - Set ringer sound volume to 50.
+
+- AT+CALM=1 - Set alert sound mode to silent.
+
+- AT+CMIC - Set the microphone gain level.
+
+###########################################################################
+###########################################################################
+
+
+
+
+
+
+
+
+
+
+
+
